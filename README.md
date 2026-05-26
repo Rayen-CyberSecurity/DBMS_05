@@ -109,7 +109,7 @@ Use `NUMERIC(p,s)` for monetary values; choose the most precise date/time type
 for each temporal attribute.
 
 | Attribute              | Your Type         | Justification                                                                     |
-|------------------------|-------------------|-----------------------------------------------------------------------------------|                   | isbn                   |`TEXT`             |An ISBN is an identifier. It can contain hyphens, so I would not storeas as number.|
+|------------------------|-------------------|-----------------------------------------------------------------------------------|                                                                                     | isbn                   |`TEXT`             |An ISBN is an identifier. It can contain hyphens, so I would not storeas as number.|
 | titel                  |`TEXT`             |A book title is normal text.                                                       |
 | erscheinungsjahr       |`INTEGER`          |The publication year is a whole number.                                            |
 | verlag                 |`TEXT`             | The publisher name is text.                                                       |
