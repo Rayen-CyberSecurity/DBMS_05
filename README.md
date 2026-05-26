@@ -108,23 +108,28 @@ data type and write it into the table below. Justify each choice in one sentence
 Use `NUMERIC(p,s)` for monetary values; choose the most precise date/time type
 for each temporal attribute.
 
-| Attribute              | Your Type         | Justification                                                                     |
-|------------------------|-------------------|-----------------------------------------------------------------------------------|                                                                                     | isbn                   |`TEXT`             |An ISBN is an identifier. It can contain hyphens, so I would not storeas as number.|
-| titel                  |`TEXT`             |A book title is normal text.                                                       |
-| erscheinungsjahr       |`INTEGER`          |The publication year is a whole number.                                            |
-| verlag                 |`TEXT`             | The publisher name is text.                                                       |
-| tagesgebuehr           |`NUMERIC(6,2)`     |This is a money value, so it should be stored with two decimal places.             |
-| exemplar_id            |`INTEGER`          |This is an ID for a physical copy of a book.                                       |
-| standort               |`TEXT`             |A location like `A-01-3` contains letters, numbers, and symbols.                   |
-| mitglied_id            |`INTEGER`          |This is an ID for a library member.                                                |
-| nachname               |`TEXT`             |A last name is text.                                                               |
-| vorname                |`TEXT`             |A first name is text.                                                              |
-| geburtsdatum           |`DATE`             |A birth date is a date without time.                                               |
-| email                  |`TEXT`             |An email address is text                                                           |
-| beitritt_datum         |`DATE`             |The joining date is a date.                                                        |
-| ausleihe_id            |`INTEGER`          |This is an ID for a loan record.                                                   |
-| ausleihe_datum         |`DATE`             |The loan date is a date.                                                           |
-| rueckgabe_datum        |`DATE`             |The return date is a date, but it can be unknown at first.                         |
+## Task 1 – Identify the Correct Data Types
+
+For each attribute in the table above, choose the most appropriate SQL standard data type and justify each choice in one sentence.
+
+| Attribute | Your Type | Justification |
+|---|---|---|
+| isbn | `TEXT` | An ISBN is an identifier. It can contain hyphens, so I would not store it as a number. |
+| titel | `TEXT` | A book title is normal text. |
+| erscheinungsjahr | `INTEGER` | The publication year is a whole number. |
+| verlag | `TEXT` | The publisher name is text. |
+| tagesgebuehr | `NUMERIC(6,2)` | This is a money value, so it should be stored with two decimal places. |
+| exemplar_id | `INTEGER` | This is an ID for a physical copy of a book. |
+| standort | `TEXT` | A location like `A-01-3` contains letters, numbers, and symbols. |
+| mitglied_id | `INTEGER` | This is an ID for a library member. |
+| nachname | `TEXT` | A last name is text. |
+| vorname | `TEXT` | A first name is text. |
+| geburtsdatum | `DATE` | A birth date is a date without time. |
+| email | `TEXT` | An email address is text. |
+| beitritt_datum | `DATE` | The joining date is a date. |
+| ausleihe_id | `INTEGER` | This is an ID for a loan record. |
+| ausleihe_datum | `DATE` | The loan date is a date. |
+| rueckgabe_datum | `DATE` | The return date is a date, but it can be unknown at first. |
 
 ### Questions for Task 1
 
