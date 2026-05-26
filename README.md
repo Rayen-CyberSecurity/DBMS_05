@@ -470,11 +470,9 @@ protects against this mistake.
         This would delete the complete loan history.
         Using a transaction is safer:
         BEGIN;
-
         DELETE FROM ausleihe;
-
-       ROLLBACK;
-       With ROLLBACK, we can undo the deletion if we notice that it was a mistake. Only after checking the result should         we    use COMMIT.
+        ROLLBACK;
+    With ROLLBACK, we can undo the deletion if we notice that it was a mistake. Only after checking the result should         we    use COMMIT.
 
 
 ---
