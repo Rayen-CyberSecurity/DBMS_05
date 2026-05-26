@@ -51,7 +51,8 @@ git --version
 > **Screenshot 1:** Take a screenshot of your terminal showing both
 > successful version checks and insert it here.
 >
-> `[insert screenshot]`
+> <img width="819" height="77" alt="Screenshot 1" src="https://github.com/user-attachments/assets/b520d2b8-86ea-4fd3-8307-e2a492d5b7af" />
+
 
 ---
 
@@ -263,7 +264,8 @@ sqlite3 bibliothek.db ".schema"
 > **Screenshot 2:** Take a screenshot showing the `.tables` and `.schema`
 > output in your terminal.
 >
-> `[insert screenshot]`
+> <img width="561" height="762" alt="Screenshot 2" src="https://github.com/user-attachments/assets/f795abc1-f656-4b15-9fdd-2e466e3f557f" />
+
 
 ### Task 2c – Test Constraints
 
@@ -289,11 +291,13 @@ INSERT INTO ausleihe VALUES (1, 1, 1, '2026-05-10', '2026-05-01');
 
 > *Describe the error or result for each test:*
 >
-> - Test A: CHECK constraint failed
+> - Test A: CHECK constraint failed: tagesgebuehr > 0 (19
 
-> - Test B:NOT NULL constraint failed: mitglied.email
+> - Test B:NOT NULL constraint failed: mitglied.email (19)
+> - Test C:CHECK constraint failed: rueckgabe_datum IS NULL 
+        OR rueckgabe_datum >= ausleihe_datum (19)
 
-> - Test C:CHECK constraint failed
+
 
 
 ### Questions for Task 2
@@ -461,16 +465,16 @@ Describe the operational consequence and explain how `BEGIN` / `ROLLBACK`
 protects against this mistake.
 
 > *Your answer:* A DELETE statement without a WHERE clause is dangerous because it deletes all rows from the table.
-For example:
-DELETE FROM ausleihe;
-This would delete the complete loan history.
-Using a transaction is safer:
-BEGIN;
+     For example:
+        DELETE FROM ausleihe;
+        This would delete the complete loan history.
+        Using a transaction is safer:
+        BEGIN;
 
-DELETE FROM ausleihe;
+        DELETE FROM ausleihe;
 
-ROLLBACK;
-With ROLLBACK, we can undo the deletion if we notice that it was a mistake. Only after checking the result should we use COMMIT.
+       ROLLBACK;
+       With ROLLBACK, we can undo the deletion if we notice that it was a mistake. Only after checking the result should         we    use COMMIT.
 
 
 ---
@@ -602,7 +606,8 @@ SELECT * FROM ausleihe WHERE ausleihe_id = 5;
 
 > **Screenshot 3:** Take a screenshot showing the inserted row.
 >
-> `[insert screenshot]`
+> <img width="535" height="105" alt="Screenshot 3" src="https://github.com/user-attachments/assets/99e9fa34-2b38-491a-8dd3-5873e2cec772" />
+
 
 ### Task 5b – Simulate a Rollback
 
@@ -628,6 +633,11 @@ SELECT COUNT(*) FROM ausleihe WHERE ausleihe_id = 6;
 ```
 
 > *Describe what you see and explain why `ROLLBACK` reversed both changes:*
+> In Task 5b, I first started a transaction with `BEGIN`. Inside the transaction, I temporarily set the return date of  loan 2 back to `NULL`, so exemplar 3 looked like it was on loan again. Then I inserted a new loan with `ausleihe_id = 6`.
+
+After that, I used `ROLLBACK` instead of `COMMIT`. Because both changes were inside the same transaction, SQLite reversed both of them. The return date of loan 2 stayed unchanged, and the new loan 6 was not saved.
+
+The verification showed that loan 2 still has its return date and that the count for loan 6 is `0`. This proves that `ROLLBACK` undid all changes made in the transaction.
 
 ### Questions for Task 5
 
@@ -740,7 +750,8 @@ sqlite3 bibliothek.db < data.sql
 > verification from Task 3a after completing all DML tasks, with
 > `.headers on` and `.mode column` active.
 >
-> `[insert screenshot]`
+> <img width="434" height="164" alt="Screenshot 4" src="https://github.com/user-attachments/assets/0138ccf3-1d82-4eff-b330-9228f069dd93" />
+
 
 ---
 
